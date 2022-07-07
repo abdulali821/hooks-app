@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import ApiCall from './components/ApiCall';
-import Input from './components/Input';
 
 function App() {
   return (

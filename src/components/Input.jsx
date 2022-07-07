@@ -6,8 +6,7 @@ function Input({data}) {
         name: "",
         email: ""
     });
-    function showOutput(e){
-        e.preventDefault();
+    function showOutput(){
         data(input);
         return setInput({id: "",name: "",email: ""});
     }

@@ -5,22 +5,25 @@ import {baseURL} from '../constants/Config'
 function ApiCall() {
     const [data, setData] = useState([]);
   const url = `${baseURL}/posts`;
+  async function getApi(){
+        try{
+        const res = await axios(url);
+        setData(res.data);
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
   useEffect(()=>{
-    axios.get(url).then((response)=>{
-        const allNotes = response.data;
-        setData(allNotes);
-    })
-    .catch((error)=>{
-        console.error(error);
-    });
-  },[])
+    getApi();
+  },)
   return <>
     {data.map((e,i)=>{
-       return <p key={i}>
-        {(JSON.stringify(e.id))}<br />
-        {(JSON.stringify(e.title))}<br /> 
-        {(JSON.stringify(e.body))}<br />
-       </p>
+       return <div key={i}>
+        <li>{(JSON.stringify(e.id))}</li><br />
+        <li>{(JSON.stringify(e.title))}</li><br /> 
+        <li>{(JSON.stringify(e.body))}</li><br />
+       </div>
     })}
   </>
 }
